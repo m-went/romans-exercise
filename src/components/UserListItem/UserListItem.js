@@ -1,12 +1,13 @@
 import styles from './UserListItem.module.scss';
 
 function UserListItem(props) {
+  const { name, attendance, average } = props.user;
   return (
     <div>
-      <div className={`${styles.h1}`}>rating</div>
+      <div className={`${styles.h1}`}>{average}</div>
       <div>
-        <p>Name</p>
-        <p>Attendance</p>
+        <p>{name}</p>
+        <p>{attendance}</p>
       </div>
       <button>X</button>
     </div>
