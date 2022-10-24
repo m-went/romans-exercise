@@ -1,5 +1,6 @@
+@use '../../assets/styles/themeVariables';
 .userList {
-  background-color: white;
+  background-color: themeVariables.$white;
   width: 100%;
   max-width: 500px;
   padding: 40px 30px;
