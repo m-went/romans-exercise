@@ -7,9 +7,8 @@ function UserList(props) {
     return <UserListItem user={user} key={user.name} />;
   });
   return (
-    <div>
-      <h1 className={styles.test}>There will be list of users! </h1>
-      <ul>{usersList}</ul>
+    <div className={`${styles.userList}`}>
+      <ul className={`${styles.users}`}>{usersList}</ul>
     </div>
   );
 }
