@@ -1,7 +1,7 @@
 @use '../../assets/styles/themeVariables';
 
 .App {
-  background-color: themeVariables.$lightGrey;
+  background-color: themeVariables.$backgroundGrey;
   display: flex;
   justify-content: center;
   align-items: center;

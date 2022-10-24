@@ -7,8 +7,8 @@ function UserListItem(props) {
     <div className={`${styles.userListItem}`}>
       <div className={`${styles.h1}`}>{average}</div>
       <div>
-        <p>{name}</p>
-        <p>{attendance}</p>
+        <p className={`${styles.name}`}>{name}</p>
+        <p className={`${styles.attendance}`}>attendance: {attendance}</p>
       </div>
       <Button />
     </div>

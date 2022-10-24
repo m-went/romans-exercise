@@ -9,6 +9,17 @@
     bottom: 0;
     width: 100%;
     height: 1px;
-    background-color: themeVariables.$lightGrey;
+    background-color: themeVariables.$borderGrey;
   }
+}
+
+.name {
+  font-size: themeVariables.$fontSizeL;
+  font-weight: 700;
+  color: themeVariables.$grey;
+}
+
+.attendance {
+  font-size: themeVariables.$fontSizeS;
+  color: themeVariables.$grey;
 }
