@@ -1,5 +1,5 @@
 import styles from './UserListItem.module.scss';
-import { ReactComponent as Icon } from '../../assets/icons/delete-icon.svg';
+import Button from '../UserListButton/UserListButton';
 
 function UserListItem(props) {
   const { name, attendance, average } = props.user;
@@ -10,9 +10,7 @@ function UserListItem(props) {
         <p>{name}</p>
         <p>{attendance}</p>
       </div>
-      <button className={`${styles.button}`}>
-        <Icon />
-      </button>
+      <Button />
     </div>
   );
 }
