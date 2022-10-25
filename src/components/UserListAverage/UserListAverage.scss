@@ -1,0 +1,24 @@
+@use '../../assets/styles/themeVariables';
+
+.UserListAverage {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: themeVariables.$white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: themeVariables.$fontSizeM;
+}
+
+.goodAvr {
+  background-color: themeVariables.$success;
+}
+
+.mediumAvr {
+  background-color: themeVariables.$warning;
+}
+
+.badAvr {
+  background-color: themeVariables.$error;
+}
