@@ -11,15 +11,25 @@
     height: 1px;
     background-color: themeVariables.$borderGrey;
   }
+  button {
+    align-self: start;
+    margin-top: 19px;
+  }
 }
 
 .name {
   font-size: themeVariables.$fontSizeL;
   font-weight: 700;
   color: themeVariables.$grey;
+  margin: 0;
 }
 
 .attendance {
   font-size: themeVariables.$fontSizeS;
   color: themeVariables.$grey;
+  margin: 0;
+}
+
+.userData {
+  margin: 19px 10px 12px 19px;
 }

@@ -7,7 +7,7 @@ function UserListItem(props) {
   return (
     <div className={`${styles.userListItem}`}>
       <Average average={average} />
-      <div>
+      <div className={`${styles.userData}`}>
         <p className={`${styles.name}`}>{name}</p>
         <p className={`${styles.attendance}`}>attendance: {attendance}</p>
       </div>
