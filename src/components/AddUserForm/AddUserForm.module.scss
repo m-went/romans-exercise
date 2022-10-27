@@ -29,7 +29,7 @@
 
   input {
     padding: 5px 8px;
-    border: 1px solid themeVariables.$darkGrey;
+    border: 1px solid themeVariables.$darkPurple;
     box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
     border-radius: 25px;
     &:focus {
@@ -43,7 +43,7 @@
   margin: 15px 0;
   padding: 7px 20px;
   font-size: themeVariables.$fontSizeS;
-  background-color: themeVariables.$grey;
+  background-color: themeVariables.$lightPurple;
   border-radius: 20px;
   border: none;
   font-weight: bold;
