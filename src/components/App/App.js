@@ -11,9 +11,15 @@ function App() {
     setUsers((st) => [...users, newUser]);
   };
 
+  const deleteUser = (userToDelete) => {
+    setUsers((st) => {
+      return st.filter((user) => user.name !== userToDelete.name);
+    });
+  };
+
   return (
     <div className="App">
-      <UserList users={users} />
+      <UserList users={users} deleteUser={deleteUser} />
       <AddUserForm users={users} addUser={addUser} />
     </div>
   );

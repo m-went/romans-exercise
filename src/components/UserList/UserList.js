@@ -4,7 +4,7 @@ import UserListItem from '../UserListItem/UserListItem';
 function UserList(props) {
   const { users } = props;
   const usersList = users.map((user) => {
-    return <UserListItem user={user} key={user.name} />;
+    return <UserListItem user={user} key={user.name} deleteUser={props.deleteUser} />;
   });
   return (
     <div className={`${styles.userList}`}>
