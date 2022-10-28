@@ -13,5 +13,3 @@ function App() {
 }
 
 export default App;
-
-/* ogarnij do konca style navbara bocznego i chyba bedzie git */
