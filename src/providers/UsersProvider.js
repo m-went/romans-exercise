@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { users as usersData } from '../data/users';
+import useUsersList from '../hooks/useUsersList';
 
 export const UsersContext = React.createContext({
   users: [],
@@ -8,17 +9,7 @@ export const UsersContext = React.createContext({
 });
 
 function UsersProvider({ children }) {
-  const [users, setUsers] = useState(usersData);
-
-  const deleteUser = (userToDelete) => {
-    setUsers((st) => {
-      return st.filter((user) => user.name !== userToDelete.name);
-    });
-  };
-
-  const addUser = (newUser) => {
-    setUsers((st) => [...users, newUser]);
-  };
+  const [users, addUser, deleteUser] = useUsersList(usersData);
 
   return (
     <UsersContext.Provider
