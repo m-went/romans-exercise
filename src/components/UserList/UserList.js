@@ -8,6 +8,7 @@ function UserList(props) {
   });
   return (
     <div className={`${styles.userList}`}>
+      <h1 className={`${styles.title}`}>Students List</h1>
       <ul className={`${styles.users}`}>{usersList}</ul>
     </div>
   );
