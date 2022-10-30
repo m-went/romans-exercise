@@ -1,5 +1,5 @@
 import styles from './UserList.module.scss';
-import UserListItem from '../UserListItem/UserListItem';
+import UserListItem from '../../components/UserListItem/UserListItem';
 
 function UserList(props) {
   const { users } = props;

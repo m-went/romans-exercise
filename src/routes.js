@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import UserList from './components/UserList/UserList';
-import AddUserForm from './components/AddUserForm/AddUserForm';
+import UserList from './views/UserList/UserList';
+import AddUserForm from './views/AddUserForm/AddUserForm';
 import { users as usersData } from './data/users';
 import { useState } from 'react';
 
