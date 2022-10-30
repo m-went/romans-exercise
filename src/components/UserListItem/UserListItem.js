@@ -1,5 +1,5 @@
 import styles from './UserListItem.module.scss';
-import Button from '../deleteUserButton/deleteUserButton';
+import Button from '../DeleteUserButton/DeleteUserButton';
 import Average from '../UserListAverage/UserListAverage';
 
 function UserListItem(props) {
@@ -11,7 +11,7 @@ function UserListItem(props) {
         <p className={`${styles.name}`}>{name}</p>
         <p className={`${styles.attendance}`}>attendance: {attendance}</p>
       </div>
-      <Button deleteUser={props.deleteUser} user={props.user} />
+      <Button user={props.user} />
     </div>
   );
 }

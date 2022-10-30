@@ -1,25 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import UserList from './views/UserList/UserList';
 import AddUserForm from './views/AddUserForm/AddUserForm';
-import { users as usersData } from './data/users';
-import { useState } from 'react';
 
 function AppRoutes(props) {
-  const [users, setUsers] = useState(usersData);
-
-  const addUser = (newUser) => {
-    setUsers((st) => [...users, newUser]);
-  };
-
-  const deleteUser = (userToDelete) => {
-    setUsers((st) => {
-      return st.filter((user) => user.name !== userToDelete.name);
-    });
-  };
   return (
     <Routes>
-      <Route path="/" element={<UserList users={users} deleteUser={deleteUser} />} />
-      <Route path="add-user" element={<AddUserForm users={users} addUser={addUser} />} />
+      <Route path="/" element={<UserList />} />
+      <Route path="add-user" element={<AddUserForm />} />
     </Routes>
   );
 }

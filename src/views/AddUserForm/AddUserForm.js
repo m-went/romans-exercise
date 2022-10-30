@@ -1,12 +1,14 @@
 import styles from './AddUserForm.module.scss';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UsersContext } from '../../providers/UsersProvider';
 
 function AddUserForm(props) {
+  const { addUser } = useContext(UsersContext);
   const [input, setInput] = useState({ name: '', attendance: '', average: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addUser(input);
+    addUser(input);
     setInput({ name: '', attendance: '', average: '' });
   };
 

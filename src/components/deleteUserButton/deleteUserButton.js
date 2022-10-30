@@ -1,9 +1,12 @@
-import styles from './deleteUserButton.module.scss';
+import styles from './DeleteUserButton.module.scss';
 import { ReactComponent as Icon } from '../../assets/icons/delete-icon.svg';
+import { useContext } from 'react';
+import { UsersContext } from '../../providers/UsersProvider';
 
-function deleteUserButton(props) {
+function DeleteUserButton(props) {
+  const { deleteUser } = useContext(UsersContext);
   const clickHandler = () => {
-    props.deleteUser(props.user);
+    deleteUser(props.user);
   };
 
   return (
@@ -13,4 +16,4 @@ function deleteUserButton(props) {
   );
 }
 
-export default deleteUserButton;
+export default DeleteUserButton;
