@@ -1,28 +1,32 @@
-import { screen, render, cleanup } from '@testing-library/react';
+import { screen, render, fireEvent } from '@testing-library/react';
 import UserList from './UserList';
-
-const mockUsersProp = [
-  { name: 'Michał Went', attendance: '55%', average: '4.5' },
-  {
-    name: 'Adam Romański',
-    attendance: '39%',
-    average: '2.3',
-  },
-];
+import UsersProvider from '../../providers/UsersProvider';
 
 describe('userList tests', () => {
-  afterEach(cleanup);
   test('render component', () => {
-    render(<UserList users={mockUsersProp} />);
+    render(<UserList />);
     const headerElement = screen.getByRole('heading', { name: 'Students List' });
     expect(headerElement).toBeInTheDocument();
   });
 
-  test('check if mock users are properly rendered', () => {
-    render(<UserList users={mockUsersProp} />);
-    const firstNameElement = screen.getByText('Michał Went');
-    const secondNameElement = screen.getByText('Adam Romański');
-    expect(firstNameElement).toBeInTheDocument();
-    expect(secondNameElement).toBeInTheDocument();
+  test('check if users are properly rendered', () => {
+    render(
+      <UsersProvider>
+        <UserList />
+      </UsersProvider>
+    );
+    const nameElement = screen.getByText('Adam Romański');
+    expect(nameElement).toBeInTheDocument();
+  });
+
+  test('check if deleteUser button works properly', () => {
+    render(
+      <UsersProvider>
+        <UserList />
+      </UsersProvider>
+    );
+    const buttonElement = screen.getByTestId('Adam Romański');
+    fireEvent.click(buttonElement);
+    expect(buttonElement).not.toBeInTheDocument();
   });
 });
