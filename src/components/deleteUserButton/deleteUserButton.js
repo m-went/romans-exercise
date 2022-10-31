@@ -10,7 +10,7 @@ function DeleteUserButton(props) {
   };
 
   return (
-    <button className={`${styles.button}`} onClick={clickHandler} data-testid={props.user.name}>
+    <button className={`${styles.button}`} onClick={clickHandler}>
       <Icon />
     </button>
   );
