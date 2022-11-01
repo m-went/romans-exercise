@@ -1,19 +1,32 @@
 import styles from './AddUserForm.module.scss';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { UsersContext } from '../../providers/UsersProvider';
+import useForm from '../../hooks/useForm';
+
+const initialFormState = {
+  name: '',
+  attendance: '',
+  average: '',
+  consent: false,
+  error: '',
+};
 
 function AddUserForm(props) {
   const { addUser } = useContext(UsersContext);
-  const [input, setInput] = useState({ name: '', attendance: '', average: '' });
+  const { formState, handleClearForm, handleConsentToggle, handleInputChange, throwError } = useForm(initialFormState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addUser(input);
-    setInput({ name: '', attendance: '', average: '' });
+    if (formState.consent) {
+      addUser({ name: formState.name, attendance: formState.attendance, average: formState.average });
+      handleClearForm();
+    } else {
+      throwError('You need to give consent');
+    }
   };
 
   const changeInputValue = (e) => {
-    setInput((st) => ({ ...st, [e.target.name]: e.target.value }));
+    handleInputChange(e);
   };
 
   return (
@@ -21,14 +34,21 @@ function AddUserForm(props) {
       <h1 className={`${styles.title}`}>Add new student</h1>
       <div className={`${styles.inputRow}`}>
         <label htmlFor="name">Name:</label>
-        <input type="text" name="name" value={input.name} onChange={changeInputValue} id="name" data-testid="name" />
+        <input
+          type="text"
+          name="name"
+          value={formState.name}
+          onChange={changeInputValue}
+          id="name"
+          data-testid="name"
+        />
       </div>
       <div className={`${styles.inputRow}`}>
         <label htmlFor="attendance">Attendance:</label>
         <input
           type="text"
           name="attendance"
-          value={input.attendance}
+          value={formState.attendance}
           onChange={changeInputValue}
           id="attendance"
           data-testid="attendance"
@@ -39,13 +59,18 @@ function AddUserForm(props) {
         <input
           type="text"
           name="average"
-          value={input.average}
+          value={formState.average}
           onChange={changeInputValue}
           id="average"
           data-testid="average"
         />
       </div>
+      <div className={`${styles.inputRow}`}>
+        <label htmlFor="consent">Consent:</label>
+        <input type="checkbox" name="consent" onChange={handleConsentToggle} id="consent" checked={formState.consent} />
+      </div>
       <button className={`${styles.button}`}>Add</button>
+      {formState.error ? <p>{formState.error}</p> : null}
     </form>
   );
 }
