@@ -1,4 +1,14 @@
 @use '../../assets/styles/themeVariables';
+
+.wrapper {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px 40px 0;
+  justify-content: center;
+}
+
 .userList {
   background-color: themeVariables.$white;
   width: 100%;

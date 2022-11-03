@@ -1,5 +1,14 @@
 @use '../../assets/styles/themeVariables';
 
+.wrapper {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px 40px 0;
+}
+
 .form {
   margin: 25px;
   background-color: themeVariables.$white;
@@ -8,8 +17,9 @@
   padding: 40px 50px;
   border-radius: 25px;
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.3);
-  margin-left: auto;
-  margin-right: auto;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 .title {
@@ -41,9 +51,33 @@
   }
 }
 
+.inputConsentRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  label {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: themeVariables.$fontSizeS;
+    color: themeVariables.$darkGrey;
+  }
+
+  input {
+    padding: 5px 8px;
+    border: 1px solid themeVariables.$darkPurple;
+    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
+    border-radius: 25px;
+    &:focus {
+      outline: none;
+      box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
+    }
+  }
+}
+
 .button {
   margin: 15px 0;
-  padding: 7px 20px;
+  padding: 7px 30px;
   font-size: themeVariables.$fontSizeS;
   background-color: themeVariables.$lightPurple;
   border-radius: 20px;
