@@ -1,7 +1,7 @@
 @use '../../assets/styles/themeVariables';
 
 .newsArticle {
-  margin: 30px 0;
+  margin: 17px 0;
   width: 100%;
   border-radius: 12px;
   color: themeVariables.$darkGrey;
@@ -11,7 +11,18 @@
 
   p {
     line-height: 1.6;
-    font-size: themeVariables.$fontSizeS;
+    font-size: themeVariables.$fontSizeM;
+  }
+
+  button {
+    margin: 15px 0;
+    padding: 8px 38px;
+    font-size: themeVariables.$fontSizeM;
+    background-color: themeVariables.$lightPurple;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    color: themeVariables.$darkGrey;
   }
 }
 
@@ -28,9 +39,11 @@
 
 .newsContent {
   display: flex;
+  flex-direction: column;
+  margin-top: 12px;
   img {
-    margin-left: 35px;
-    max-width: 200px;
+    width: 100%;
+    max-width: 400px;
     object-fit: cover;
   }
 }

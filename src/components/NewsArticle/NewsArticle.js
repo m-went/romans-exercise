@@ -1,6 +1,6 @@
 import styles from './NewsArticle.module.scss';
 
-function NewsArticle({ title, category, content }) {
+function NewsArticle({ title, category, content, image }) {
   return (
     <div className={`${styles.newsArticle}`}>
       <div className={`${styles.newsTitle}`}>
@@ -9,7 +9,15 @@ function NewsArticle({ title, category, content }) {
       </div>
       <div className={`${styles.newsContent}`}>
         <p>{content}</p>
+        {image ? (
+          <div className={`${styles.imgContainer}`}>
+            <img src={image} alt="Doggo img" />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
+      <button>Read more</button>
     </div>
   );
 }
