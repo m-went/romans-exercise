@@ -11,10 +11,14 @@ function NewsSection(props) {
   useEffect(() => {
     const getNews = async () => {
       try {
-        const catFact = await axios.get('https://catfact.ninja/fact');
-        const activityIdea = await axios.get('https://www.boredapi.com/api/activity/');
-        const joke = await axios.get('https://official-joke-api.appspot.com/random_joke');
-        const randomDogPhoto = await axios.get('https://dog.ceo/api/breeds/image/random');
+        const data1 = axios.get('https://catfact.ninja/fact');
+        const data2 = axios.get('https://www.boredapi.com/api/activity/');
+        const data3 = axios.get('https://official-joke-api.appspot.com/random_joke');
+        const data4 = axios.get('https://dog.ceo/api/breeds/image/random');
+        const catFact = await data1;
+        const activityIdea = await data2;
+        const joke = await data3;
+        const randomDogPhoto = await data4;
         const newArticles = [
           {
             id: catFact.data.length,
