@@ -12,7 +12,11 @@ function useUsersList(val = []) {
   const addUser = (newUser) => {
     setUsers((st) => [...users, newUser]);
   };
-  return [users, addUser, deleteUser];
+
+  const addAllUsers = (users) => {
+    setUsers(users);
+  };
+  return [users, addUser, addAllUsers, deleteUser];
 }
 
 export default useUsersList;

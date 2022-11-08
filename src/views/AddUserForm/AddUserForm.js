@@ -1,6 +1,4 @@
 import styles from './AddUserForm.module.scss';
-import { useContext } from 'react';
-import { UsersContext } from '../../providers/UsersProvider';
 import useForm from '../../hooks/useForm';
 
 const initialFormState = {
@@ -11,8 +9,7 @@ const initialFormState = {
   error: '',
 };
 
-function AddUserForm(props) {
-  const { addUser } = useContext(UsersContext);
+function AddUserForm({ addUser }) {
   const { formState, handleClearForm, handleConsentToggle, handleInputChange, throwError } = useForm(initialFormState);
 
   const handleSubmit = (e) => {

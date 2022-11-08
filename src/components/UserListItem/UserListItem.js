@@ -11,7 +11,7 @@ function UserListItem(props) {
         <p className={`${styles.name}`}>{name}</p>
         <p className={`${styles.attendance}`}>attendance: {attendance}</p>
       </div>
-      <Button user={props.user} />
+      <Button user={props.user} deleteUser={props.deleteUser} />
     </div>
   );
 }
