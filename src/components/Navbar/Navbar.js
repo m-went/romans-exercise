@@ -5,7 +5,7 @@ function Navbar(props) {
   return (
     <nav className={`${styles.navbar}`}>
       <div className={`${styles.navHeader}`}>React Exercise</div>
-      <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/group" end>
+      <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/group/:id">
         Users List
       </NavLink>
       <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/add-user" end>
