@@ -24,7 +24,7 @@ function UserList({ allUsers, deleteUser }) {
 
   const groupsList = groups.map((group) => {
     return (
-      <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to={`/group/${group}`}>
+      <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to={`/group/${group}`} key={group}>
         {group}
       </NavLink>
     );
