@@ -19,7 +19,7 @@ function App() {
   return (
     <div className={`${styles.app}`}>
       <Navbar />
-      <Searchbar />
+      <Searchbar users={users} />
       <Routes users={users} deleteUser={deleteUser} addUser={addUser} />
       <NewsSection />
     </div>
