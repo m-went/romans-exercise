@@ -1,25 +1,23 @@
 import { useEffect, useState } from 'react';
 import styles from './Searchbar.module.scss';
+import useUsers from '../../hooks/useUsers';
 
-function Searchbar({ users }) {
+function Searchbar(props) {
   const [searchVal, setSearchVal] = useState('');
   const [foundUser, setFoundUser] = useState([]);
+
+  const { findUsers } = useUsers();
 
   const handleChange = (e) => {
     setSearchVal(e.target.value);
   };
 
   useEffect(() => {
-    if (searchVal !== '') {
-      setFoundUser(() => {
-        return users.filter((user) => {
-          return user.name.toLowerCase().includes(searchVal.toLowerCase());
-        });
-      });
-    } else {
-      setFoundUser([]);
-    }
-  }, [searchVal, users]);
+    (async () => {
+      const foundUsers = await findUsers(searchVal);
+      setFoundUser(foundUsers);
+    })();
+  }, [searchVal]);
 
   const foundList = foundUser.map((user) => {
     return <li className={`${styles.searchResultsItem}`}>{user.name}</li>;
