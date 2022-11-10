@@ -5,7 +5,6 @@ import useUsers from '../../hooks/useUsers';
 function Searchbar(props) {
   const [searchVal, setSearchVal] = useState('');
   const [foundUser, setFoundUser] = useState([]);
-
   const { findUsers } = useUsers();
 
   const handleChange = (e) => {
@@ -17,10 +16,14 @@ function Searchbar(props) {
       const foundUsers = await findUsers(searchVal);
       setFoundUser(foundUsers);
     })();
-  }, [searchVal]);
+  }, [searchVal, findUsers]);
 
   const foundList = foundUser.map((user) => {
-    return <li className={`${styles.searchResultsItem}`}>{user.name}</li>;
+    return (
+      <li key={user.name} className={`${styles.searchResultsItem}`}>
+        {user.name}
+      </li>
+    );
   });
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 function useUsersList(val = []) {
   const [users, setUsers] = useState(val);
@@ -13,9 +13,9 @@ function useUsersList(val = []) {
     setUsers((st) => [...users, newUser]);
   };
 
-  const addAllUsers = (users) => {
+  const addAllUsers = useCallback((users) => {
     setUsers(users);
-  };
+  }, []);
   return [users, addUser, addAllUsers, deleteUser];
 }
 

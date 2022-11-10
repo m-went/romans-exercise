@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useCallback } from 'react';
 
 function useUsers() {
   const getGroups = async () => {
@@ -19,7 +20,7 @@ function useUsers() {
     }
   };
 
-  const findUsers = async (searchPhrase) => {
+  const findUsers = useCallback(async (searchPhrase) => {
     try {
       const { data } = await axios.post('/searchUsers', {
         body: searchPhrase,
@@ -28,7 +29,7 @@ function useUsers() {
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
   return {
     getGroups,

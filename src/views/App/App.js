@@ -14,7 +14,7 @@ function App() {
     axios.get('/students').then((res) => {
       addAllUsers(res.data);
     });
-  }, []);
+  }, [addAllUsers]);
 
   return (
     <div className={`${styles.app}`}>
