@@ -2,21 +2,28 @@ import styles from './UserList.module.scss';
 import UserListItem from '../../components/UserListItem/UserListItem';
 import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import useUsers from '../../hooks/useUsers';
 
-function UserList({ allUsers, deleteUser }) {
+function UserList({ deleteUser }) {
   const { id } = useParams();
+  const { getGroups, getUsers } = useUsers();
 
   const [users, setUsers] = useState([]);
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    axios.get('/group').then((res) => setGroups(res.data));
-  }, []);
+    (async () => {
+      const allGroups = await getGroups();
+      setGroups(allGroups);
+    })();
+  }, [getGroups]);
 
   useEffect(() => {
-    axios.get(`/group/${id}`).then((res) => setUsers(res.data));
-  }, [id]);
+    (async () => {
+      const groupStudents = await getUsers(id);
+      setUsers(groupStudents);
+    })();
+  }, [id, getUsers]);
 
   const usersList = users.map((user) => {
     return <UserListItem user={user} key={user.name} deleteUser={deleteUser} />;

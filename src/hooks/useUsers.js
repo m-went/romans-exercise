@@ -2,23 +2,23 @@ import axios from 'axios';
 import { useCallback } from 'react';
 
 function useUsers() {
-  const getGroups = async () => {
+  const getGroups = useCallback(async () => {
     try {
       const result = await axios.get('/groups');
-      return result.data.groups;
+      return result.data;
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
-  const getUsers = async (id) => {
+  const getUsers = useCallback(async (id) => {
     try {
-      const result = await axios.get(`/students/${id}`);
-      return result.data.students;
+      const result = await axios.get(`/group/${id}`);
+      return result.data;
     } catch (e) {
       console.log(e);
     }
-  };
+  }, []);
 
   const findUsers = useCallback(async (searchPhrase) => {
     try {
