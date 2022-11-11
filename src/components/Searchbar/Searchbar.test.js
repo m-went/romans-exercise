@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { setupServer } from 'msw/node';
 import { handlers } from '../../mocks/handlers';
 import SearchBar from './SearchBar';
@@ -12,15 +12,29 @@ describe('searchbar tests', () => {
 
   test('renders the component', () => {
     render(<SearchBar />);
-    screen.getByText('Teacher');
-    screen.getByPlaceholderText('Find student');
+    const loggedUser = screen.getByText('Teacher');
+    const input = screen.getByPlaceholderText('Find student');
+    expect(loggedUser).toBeInTheDocument();
+    expect(input).toBeInTheDocument();
   });
 
   test('displays users when search phrase is matching', async () => {
     render(<SearchBar />);
     const input = screen.getByPlaceholderText('Find student');
     fireEvent.change(input, { target: { value: 'ad' } });
+    const foundUser = await screen.findByText(/Adam Romański/);
+    expect(input).toBeInTheDocument();
+    expect(foundUser).toBeInTheDocument();
+  });
 
-    await screen.findByText(/Adam Romański/);
+  test('hides list when input is empty', async () => {
+    render(<SearchBar />);
+    const input = screen.getByPlaceholderText('Find student');
+    fireEvent.change(input, { target: { value: 'ad' } });
+    const foundUser = await screen.findByText(/Adam Romański/);
+    fireEvent.change(input, { target: { value: '' } });
+    await waitFor(() => {
+      expect(foundUser).not.toBeVisible();
+    });
   });
 });
