@@ -11,7 +11,7 @@ function NewsArticle({ title, category, content, image }) {
         <p>{content}</p>
         {image ? (
           <div className={`${styles.imgContainer}`}>
-            <img src={image} alt="Doggo img" />
+            <img src={image} alt="News img" />
           </div>
         ) : (
           ''
