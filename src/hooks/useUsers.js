@@ -20,7 +20,7 @@ function useUsers() {
     }
   }, []);
 
-  const findUsers = useCallback(async (searchPhrase) => {
+  const findUsers = async (searchPhrase) => {
     try {
       const { data } = await axios.post('/searchUsers', {
         body: searchPhrase,
@@ -29,7 +29,7 @@ function useUsers() {
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  };
 
   return {
     getGroups,
