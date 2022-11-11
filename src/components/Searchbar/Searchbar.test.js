@@ -34,7 +34,7 @@ describe('searchbar tests', () => {
     const foundUser = await screen.findByText(/Adam Romański/);
     fireEvent.change(input, { target: { value: '' } });
     await waitFor(() => {
-      expect(foundUser).not.toBeVisible();
+      expect(foundUser).not.toBeInTheDocument();
     });
   });
 });
