@@ -8,8 +8,10 @@ function UserListAverage(props) {
     bgColor = 'badAvr';
   } else if (average <= 4.0) {
     bgColor = 'mediumAvr';
-  } else {
+  } else if (average <= 5.0) {
     bgColor = 'goodAvr';
+  } else {
+    bgColor = 'noAvr';
   }
 
   return <div className={`UserListAverage ${bgColor}`}>{props.average}</div>;
