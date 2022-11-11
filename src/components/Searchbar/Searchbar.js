@@ -1,26 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './Searchbar.module.scss';
 import useUsers from '../../hooks/useUsers';
+import { useCombobox } from 'downshift';
 
 function Searchbar(props) {
-  const [searchVal, setSearchVal] = useState('');
   const [foundUser, setFoundUser] = useState([]);
   const { findUsers } = useUsers();
 
-  const handleChange = (e) => {
-    setSearchVal(e.target.value);
+  const searchUsers = async ({ inputValue }) => {
+    const foundUsers = await findUsers(inputValue);
+    setFoundUser(foundUsers);
   };
 
-  useEffect(() => {
-    (async () => {
-      const foundUsers = await findUsers(searchVal);
-      setFoundUser(foundUsers);
-    })();
-  }, [searchVal, findUsers]);
+  const { isOpen, getMenuProps, getInputProps, highlightedIndex, getItemProps } = useCombobox({
+    onInputValueChange: searchUsers,
+    items: foundUser,
+  });
 
-  const foundList = foundUser.map((user) => {
+  const foundList = foundUser.map((user, index) => {
     return (
-      <li key={user.name} className={`${styles.searchResultsItem}`}>
+      <li
+        {...getItemProps({ user, index })}
+        key={user.name}
+        className={`${styles.searchResultsItem} ${highlightedIndex === index ? styles.highlighted : ''}`}
+      >
         {user.name}
       </li>
     );
@@ -33,14 +36,13 @@ function Searchbar(props) {
         <p className={`${styles.loggedUser}`}>Teacher</p>
       </div>
       <div className={`${styles.searchWrapper}`}>
-        <input
-          type="text"
-          placeholder="Find student"
-          value={searchVal}
-          onChange={handleChange}
-          className={`${styles.searchbarInput}`}
-        />
-        {foundUser.length === 0 ? '' : <ul className={`${styles.searchResults}`}> {foundList} </ul>}
+        <input {...getInputProps()} type="text" placeholder="Find student" className={`${styles.searchbarInput}`} />
+        <ul
+          {...getMenuProps()}
+          className={`${styles.searchResults} ${isOpen && foundList.length > 0 ? '' : styles.hidden}`}
+        >
+          {isOpen && foundList}
+        </ul>
       </div>
     </div>
   );

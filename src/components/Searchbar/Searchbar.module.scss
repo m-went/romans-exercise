@@ -63,6 +63,14 @@
   border: 2px solid themeVariables.$lightPurple;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
+.highlighted {
+  background-color: themeVariables.$lightPurple;
+}
+
 .searchResultsItem {
   font-weight: bold;
   color: themeVariables.$darkGrey;
