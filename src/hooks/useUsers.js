@@ -20,6 +20,15 @@ function useUsers() {
     }
   }, []);
 
+  const findUser = async (userId) => {
+    try {
+      const result = await axios.get(`/users/${userId}`);
+      return result.data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const findUsers = async (searchPhrase) => {
     try {
       const { data } = await axios.post('/searchUsers', {
@@ -34,6 +43,7 @@ function useUsers() {
   return {
     getGroups,
     getUsers,
+    findUser,
     findUsers,
   };
 }

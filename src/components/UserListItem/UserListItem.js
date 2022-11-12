@@ -4,8 +4,15 @@ import Average from '../UserListAverage/UserListAverage';
 
 function UserListItem(props) {
   const { name, attendance, average } = props.user;
+  const { openModal, choseUser } = props;
+
+  const handleClick = () => {
+    choseUser(props.user);
+    openModal();
+  };
+
   return (
-    <div className={`${styles.userListItem}`}>
+    <div onClick={handleClick} className={`${styles.userListItem}`}>
       <Average average={average} />
       <div className={`${styles.userData}`}>
         <p className={`${styles.name}`}>{name}</p>

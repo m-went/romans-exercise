@@ -4,7 +4,7 @@ import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useUsers from '../../hooks/useUsers';
 
-function UserList({ deleteUser }) {
+function UserList({ deleteUser, openModal, choseUser }) {
   const { id } = useParams();
   const { getGroups, getUsers } = useUsers();
 
@@ -26,7 +26,9 @@ function UserList({ deleteUser }) {
   }, [id, getUsers]);
 
   const usersList = users.map((user) => {
-    return <UserListItem user={user} key={user.name} deleteUser={deleteUser} />;
+    return (
+      <UserListItem openModal={openModal} choseUser={choseUser} user={user} key={user.name} deleteUser={deleteUser} />
+    );
   });
 
   const groupsList = groups.map((group) => {

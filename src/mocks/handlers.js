@@ -18,6 +18,16 @@ export const handlers = [
     }
   }),
 
+  rest.get('/users/:id', (req, res, ctx) => {
+    const { id } = req.params;
+    const searchedUser = students.filter((st) => st.id === id);
+    if (searchedUser) {
+      return res(ctx.status(200), ctx.json(searchedUser));
+    } else {
+      return res(ctx.status(404), ctx.json({ error: 'No user found' }));
+    }
+  }),
+
   rest.post('/searchUsers', async (req, res, ctx) => {
     const searchVal = await req.json();
     if (searchVal.body !== '') {
