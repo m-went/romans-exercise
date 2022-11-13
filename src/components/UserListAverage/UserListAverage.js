@@ -4,7 +4,7 @@ function UserListAverage({ average, isInModal = false }) {
   const averageNum = parseFloat(average);
   let bgColor;
 
-  if (averageNum <= 2.0) {
+  if (averageNum <= 3.0) {
     bgColor = 'badAvr';
   } else if (averageNum <= 4.0) {
     bgColor = 'mediumAvr';

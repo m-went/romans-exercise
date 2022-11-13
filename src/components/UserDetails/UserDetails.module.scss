@@ -28,12 +28,20 @@
 }
 
 .username {
-  font-size: themeVariables.$fontSizeXL;
+  font-size: themeVariables.$fontSizeXXL;
+  font-weight: 700;
   color: themeVariables.$darkGrey;
   margin: 10px 20px 20px 0;
 }
 
 .subjectInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.subject {
   display: flex;
   align-items: center;
   justify-content: space-between;
