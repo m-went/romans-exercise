@@ -8,6 +8,7 @@ const modalContainer = document.getElementById('modal-container');
 
 function Modal({ closeModal, chosenUser }) {
   const modalNode = document.createElement('div');
+  modalNode.classList.add(`${styles.modalBackground}`);
 
   useEffect(() => {
     modalContainer.appendChild(modalNode);
@@ -24,7 +25,7 @@ function Modal({ closeModal, chosenUser }) {
     <div className={`${styles.modal}`}>
       <UserDetails user={chosenUser} />
       <button className={`${styles.button}`} onClick={handleClick}>
-        Close modal
+        Close
       </button>
     </div>,
     modalNode
