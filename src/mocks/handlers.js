@@ -2,6 +2,7 @@ import { rest } from 'msw';
 import students from './students';
 import groups from './groups';
 import { catFact, activityIdea, randomDogPhoto, joke } from './news';
+import { db } from './db';
 
 export const handlers = [
   rest.get('/groups', (req, res, ctx) => {
@@ -10,9 +11,15 @@ export const handlers = [
 
   rest.get('/group/:id', (req, res, ctx) => {
     const { id } = req.params;
-    const studentsFromThisGroup = students.filter((st) => st.group === id);
-    if (studentsFromThisGroup.length > 0) {
-      return res(ctx.status(200), ctx.json(studentsFromThisGroup));
+    const users = db.user.findMany({
+      where: {
+        group: {
+          equals: id,
+        },
+      },
+    });
+    if (users.length > 0) {
+      return res(ctx.status(200), ctx.json(users));
     } else {
       return res(ctx.status(200), ctx.json(students));
     }
@@ -20,9 +27,15 @@ export const handlers = [
 
   rest.get('/users/:id', (req, res, ctx) => {
     const { id } = req.params;
-    const searchedUser = students.filter((st) => st.id === id);
-    if (searchedUser) {
-      return res(ctx.status(200), ctx.json(searchedUser));
+    const user = db.user.findFirst({
+      where: {
+        id: {
+          equals: id,
+        },
+      },
+    });
+    if (user) {
+      return res(ctx.status(200), ctx.json(user));
     } else {
       return res(ctx.status(404), ctx.json({ error: 'No user found' }));
     }

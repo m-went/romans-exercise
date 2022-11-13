@@ -24,7 +24,7 @@ function App() {
 
   const showUserDetails = async (user) => {
     const foundUser = await findUser(user.id);
-    setChosenUser(foundUser[0]);
+    setChosenUser(foundUser);
     openModal();
   };
 
