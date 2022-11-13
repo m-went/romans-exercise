@@ -13,7 +13,10 @@ function UserList({ deleteUser, showUserDetails }) {
   useEffect(() => {
     (async () => {
       const allGroups = await getGroups();
-      setGroups(allGroups);
+      const groupsNames = allGroups.map((group) => {
+        return group.name;
+      });
+      setGroups(groupsNames);
     })();
   }, [getGroups]);
 

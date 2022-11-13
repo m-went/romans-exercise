@@ -7,8 +7,6 @@ export const worker = setupWorker(...handlers);
 
 faker.seed(123);
 
-const groups = ['A', 'B', 'C'];
-
 const createGroups = () => {
   for (let i = 0; i < 3; i++) {
     const newGroup = {
@@ -27,7 +25,7 @@ const createUsers = () => {
       attendance: faker.datatype.number({ min: 0, max: 100, precision: 1 }).toString(),
       average: faker.datatype.number({ min: 2, max: 5, precision: 0.1 }).toString(),
       course: `${faker.name.jobDescriptor()} ${faker.name.jobArea()}`,
-      group: groups[faker.datatype.number({ min: 0, max: 2 })],
+      group: db.group.getAll()[faker.datatype.number({ min: 0, max: 2 })].name,
       grades: [
         {
           subject: 'Business Philosophy',

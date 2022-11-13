@@ -1,14 +1,11 @@
 import { rest } from 'msw';
-import students from './students';
-import groups from './groups';
 import { catFact, activityIdea, randomDogPhoto, joke } from './news';
 import { db } from './db';
 
 export const handlers = [
   rest.get('/groups', (req, res, ctx) => {
     const allGroups = db.group.getAll();
-    console.log(allGroups);
-    return res(ctx.status(200), ctx.json(groups));
+    return res(ctx.status(200), ctx.json(allGroups));
   }),
 
   rest.get('/group/:id', (req, res, ctx) => {
@@ -23,7 +20,7 @@ export const handlers = [
     if (users.length > 0) {
       return res(ctx.status(200), ctx.json(users));
     } else {
-      return res(ctx.status(200), ctx.json(students));
+      return res(ctx.status(200), ctx.json(db.user.getAll()));
     }
   }),
 
@@ -60,7 +57,7 @@ export const handlers = [
   }),
 
   rest.get('/students', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(students));
+    return res(ctx.status(200), ctx.json(db.user.getAll()));
   }),
 
   rest.get('https://catfact.ninja/fact', (req, res, ctx) => {

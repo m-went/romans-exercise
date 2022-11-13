@@ -2,7 +2,6 @@ import styles from './UserDetails.module.scss';
 import Average from '../UserListAverage/UserListAverage';
 
 function UserDetails({ user }) {
-  console.log(user);
   return (
     <div className={`${styles.userDetails}`}>
       <Average average={user.average} isInModal={true} />
