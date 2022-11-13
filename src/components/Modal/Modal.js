@@ -23,7 +23,9 @@ function Modal({ closeModal, chosenUser }) {
   return ReactDOM.createPortal(
     <div className={`${styles.modal}`}>
       <UserDetails user={chosenUser} />
-      <button onClick={handleClick}>Close modal</button>
+      <button className={`${styles.button}`} onClick={handleClick}>
+        Close modal
+      </button>
     </div>,
     modalNode
   );

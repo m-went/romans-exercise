@@ -1,4 +1,5 @@
 import styles from './NewsArticle.module.scss';
+import Button from '../Button/Button';
 
 function NewsArticle({ title, category, content, image }) {
   return (
@@ -17,7 +18,7 @@ function NewsArticle({ title, category, content, image }) {
           ''
         )}
       </div>
-      <button>Read more</button>
+      <Button text={'Read more'} />
     </div>
   );
 }

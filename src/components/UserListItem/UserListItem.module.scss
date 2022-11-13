@@ -2,6 +2,7 @@
 .userListItem {
   display: flex;
   align-items: center;
+  cursor: pointer;
   position: relative;
   &:not(:last-child)::after {
     content: '';
