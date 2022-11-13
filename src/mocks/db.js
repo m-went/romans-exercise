@@ -23,4 +23,9 @@ export const db = factory({
       },
     ],
   },
+
+  group: {
+    id: primaryKey(String),
+    name: String,
+  },
 });

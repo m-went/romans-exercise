@@ -9,6 +9,16 @@ faker.seed(123);
 
 const groups = ['A', 'B', 'C'];
 
+const createGroups = () => {
+  for (let i = 0; i < 3; i++) {
+    const newGroup = {
+      id: faker.datatype.uuid(),
+      name: faker.music.genre(),
+    };
+    db.group.create(newGroup);
+  }
+};
+
 const createUsers = () => {
   for (let i = 0; i < 15; i++) {
     const newUser = {
@@ -37,4 +47,5 @@ const createUsers = () => {
   }
 };
 
+createGroups();
 createUsers();

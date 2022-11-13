@@ -6,6 +6,8 @@ import { db } from './db';
 
 export const handlers = [
   rest.get('/groups', (req, res, ctx) => {
+    const allGroups = db.group.getAll();
+    console.log(allGroups);
     return res(ctx.status(200), ctx.json(groups));
   }),
 
@@ -44,10 +46,14 @@ export const handlers = [
   rest.post('/searchUsers', async (req, res, ctx) => {
     const searchVal = await req.json();
     if (searchVal.body !== '') {
-      const foundStudents = students.filter((user) => {
-        return user.name.toLowerCase().includes(searchVal.body.toLowerCase());
+      const users = db.user.findMany({
+        where: {
+          name: {
+            contains: searchVal.body,
+          },
+        },
       });
-      return res(ctx.status(200), ctx.json(foundStudents));
+      return res(ctx.status(200), ctx.json(users));
     } else {
       return res(ctx.status(200), ctx.json([]));
     }
