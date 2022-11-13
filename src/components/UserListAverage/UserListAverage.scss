@@ -11,6 +11,17 @@
   font-size: themeVariables.$fontSizeM;
 }
 
+.modalAverage {
+  width: 68px;
+  height: 68px;
+  font-size: themeVariables.$fontSizeXL;
+  display: flex;
+  border-radius: 50%;
+  color: themeVariables.$white;
+  align-items: center;
+  justify-content: center;
+}
+
 .goodAvr {
   background-color: themeVariables.$success;
 }

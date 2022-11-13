@@ -2,6 +2,8 @@ import styles from './Modal.module.scss';
 import ReactDOM from 'react-dom';
 import { useEffect } from 'react';
 
+import UserDetails from '../UserDetails/UserDetails';
+
 const modalContainer = document.getElementById('modal-container');
 
 function Modal({ closeModal, chosenUser }) {
@@ -20,7 +22,7 @@ function Modal({ closeModal, chosenUser }) {
 
   return ReactDOM.createPortal(
     <div className={`${styles.modal}`}>
-      <h1>Hello</h1>
+      <UserDetails user={chosenUser} />
       <button onClick={handleClick}>Close modal</button>
     </div>,
     modalNode

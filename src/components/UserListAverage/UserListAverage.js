@@ -1,20 +1,20 @@
 import './UserListAverage.scss';
 
-function UserListAverage(props) {
-  const average = parseFloat(props.average);
+function UserListAverage({ average, isInModal = false }) {
+  const averageNum = parseFloat(average);
   let bgColor;
 
-  if (average <= 2.0) {
+  if (averageNum <= 2.0) {
     bgColor = 'badAvr';
-  } else if (average <= 4.0) {
+  } else if (averageNum <= 4.0) {
     bgColor = 'mediumAvr';
-  } else if (average <= 5.0) {
+  } else if (averageNum <= 5.0) {
     bgColor = 'goodAvr';
   } else {
     bgColor = 'noAvr';
   }
 
-  return <div className={`UserListAverage ${bgColor}`}>{props.average}</div>;
+  return <div className={isInModal ? `modalAverage ${bgColor}` : `UserListAverage ${bgColor}`}>{average}</div>;
 }
 
 export default UserListAverage;

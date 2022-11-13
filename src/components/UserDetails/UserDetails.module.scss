@@ -1,0 +1,41 @@
+@use '../../assets/styles/themeVariables';
+
+.userDetails {
+  width: 100%;
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.details {
+  width: 100%;
+  padding: 40px;
+}
+
+.contentTitle {
+  font-size: themeVariables.$fontSizeL;
+  color: themeVariables.$darkGrey;
+  margin-bottom: 0;
+}
+
+.course {
+  font-size: themeVariables.$fontSizeL;
+  color: themeVariables.$darkGrey;
+  margin: 10px 20px 20px 0;
+}
+
+.username {
+  font-size: themeVariables.$fontSizeXL;
+  color: themeVariables.$darkGrey;
+  margin: 10px 20px 20px 0;
+}
+
+.subjectInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 250px;
+}

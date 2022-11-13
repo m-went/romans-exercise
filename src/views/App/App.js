@@ -22,16 +22,17 @@ function App() {
     });
   }, [addAllUsers]);
 
-  const choseUser = async (user) => {
+  const showUserDetails = async (user) => {
     const foundUser = await findUser(user.id);
-    setChosenUser(foundUser);
+    setChosenUser(foundUser[0]);
+    openModal();
   };
 
   return (
     <div className={`${styles.app}`}>
       <Navbar />
       <Searchbar users={users} />
-      <Routes users={users} deleteUser={deleteUser} addUser={addUser} choseUser={choseUser} openModal={openModal} />
+      <Routes users={users} deleteUser={deleteUser} addUser={addUser} showUserDetails={showUserDetails} />
       {isOpen ? <Modal chosenUser={chosenUser} closeModal={closeModal} /> : null}
       <NewsSection />
     </div>

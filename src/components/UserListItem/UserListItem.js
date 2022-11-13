@@ -4,11 +4,10 @@ import Average from '../UserListAverage/UserListAverage';
 
 function UserListItem(props) {
   const { name, attendance, average } = props.user;
-  const { openModal, choseUser } = props;
+  const { showUserDetails } = props;
 
   const handleClick = () => {
-    choseUser(props.user);
-    openModal();
+    showUserDetails(props.user);
   };
 
   return (

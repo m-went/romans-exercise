@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import UserList from './UserList';
+import UserList from './UserListContainer';
 import App from '../App/App';
 import { BrowserRouter } from 'react-router-dom';
 import { handlers } from '../../mocks/handlers';

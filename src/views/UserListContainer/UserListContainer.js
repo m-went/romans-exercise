@@ -1,13 +1,12 @@
-import styles from './UserList.module.scss';
-import UserListItem from '../../components/UserListItem/UserListItem';
+import styles from './UserListContainer.module.scss';
 import { useParams, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import useUsers from '../../hooks/useUsers';
+import UsersList from '../../components/UsersList/UsersList';
 
-function UserList({ deleteUser, openModal, choseUser }) {
+function UserList({ deleteUser, showUserDetails }) {
   const { id } = useParams();
   const { getGroups, getUsers } = useUsers();
-
   const [users, setUsers] = useState([]);
   const [groups, setGroups] = useState([]);
 
@@ -25,12 +24,6 @@ function UserList({ deleteUser, openModal, choseUser }) {
     })();
   }, [id, getUsers]);
 
-  const usersList = users.map((user) => {
-    return (
-      <UserListItem openModal={openModal} choseUser={choseUser} user={user} key={user.name} deleteUser={deleteUser} />
-    );
-  });
-
   const groupsList = groups.map((group) => {
     return (
       <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to={`/group/${group}`} key={group}>
@@ -42,10 +35,7 @@ function UserList({ deleteUser, openModal, choseUser }) {
   return (
     <div className={`${styles.componentWrapper}`}>
       <nav className={`${styles.groupHeader}`}>Group: {groupsList}</nav>
-      <div className={`${styles.userList}`}>
-        <h1 className={`${styles.title}`}>Students List</h1>
-        <ul className={`${styles.users}`}>{usersList}</ul>
-      </div>
+      <UsersList deleteUser={deleteUser} showUserDetails={showUserDetails} users={users} />
     </div>
   );
 }
