@@ -1,5 +1,3 @@
-import React from 'react';
-
 import UserListAverage from './UserListAverage';
 
 export default {

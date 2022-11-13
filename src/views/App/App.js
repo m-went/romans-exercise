@@ -33,7 +33,7 @@ function App() {
       <Navbar />
       <Searchbar users={users} />
       <Routes users={users} deleteUser={deleteUser} addUser={addUser} showUserDetails={showUserDetails} />
-      {isOpen ? <Modal chosenUser={chosenUser} closeModal={closeModal} /> : null}
+      <Modal chosenUser={chosenUser} isOpen={isOpen} closeModal={closeModal} />
       <NewsSection />
     </div>
   );
