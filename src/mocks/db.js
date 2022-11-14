@@ -28,4 +28,11 @@ export const db = factory({
     id: primaryKey(String),
     name: String,
   },
+
+  teacher: {
+    id: primaryKey(String),
+    name: String,
+    login: String,
+    password: String,
+  },
 });

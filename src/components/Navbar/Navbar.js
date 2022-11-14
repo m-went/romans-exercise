@@ -11,6 +11,7 @@ function Navbar(props) {
       <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/add-user" end>
         Add User
       </NavLink>
+      <NavLink onClick={() => localStorage.removeItem('token')}>Logout</NavLink>
     </nav>
   );
 }

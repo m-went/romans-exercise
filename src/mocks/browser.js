@@ -1,9 +1,9 @@
 import { setupWorker } from 'msw';
-import { handlers } from './handlers';
+import { allHandlers } from './handlers/allHandlers';
 import { db } from './db';
 import { faker } from '@faker-js/faker';
 
-export const worker = setupWorker(...handlers);
+export const worker = setupWorker(...allHandlers);
 
 faker.seed(123);
 
@@ -15,6 +15,16 @@ const createGroups = () => {
     };
     db.group.create(newGroup);
   }
+};
+
+const createTeacher = () => {
+  const NewTeacher = {
+    id: '1',
+    name: 'Jacek Sobczak',
+    login: 'teacher@studybuddy.com',
+    password: 'abc1234',
+  };
+  db.teacher.create(NewTeacher);
 };
 
 const createUsers = () => {
@@ -46,4 +56,5 @@ const createUsers = () => {
 };
 
 createGroups();
+createTeacher();
 createUsers();
