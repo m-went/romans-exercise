@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navbar.module.scss';
+import { useAuth } from '../../hooks/useAuth';
 
 function Navbar(props) {
+  const auth = useAuth();
   return (
     <nav className={`${styles.navbar}`}>
       <div className={`${styles.navHeader}`}>React Exercise</div>
@@ -11,7 +13,7 @@ function Navbar(props) {
       <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/add-user" end>
         Add User
       </NavLink>
-      <NavLink onClick={() => localStorage.removeItem('token')}>Logout</NavLink>
+      <NavLink onClick={() => auth.signOut()}>Logout</NavLink>
     </nav>
   );
 }

@@ -10,7 +10,6 @@ const sanitizeUser = (user) => {
 export const auth = [
   rest.post('/login', async (req, res, ctx) => {
     const data = await req.json();
-    console.log(data);
     const user = db.teacher.findFirst({
       where: {
         login: {
