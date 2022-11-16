@@ -1,0 +1,60 @@
+@use '../../assets/styles/themeVariables';
+
+@keyframes shrinkAnimation {
+  from {
+    transform: translateX(-50%) scaleX(1);
+  }
+  to {
+    transform: translateX(-50%) scaleX(0);
+  }
+}
+
+@keyframes slideAnimation {
+  from {
+    transform: translateX(-50%) translateY(500%);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.error {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10%;
+  background-color: white;
+  padding: 25px 25px 15px;
+  color: themeVariables.$error;
+  border: 3px solid themeVariables.$error;
+  border-radius: 15px;
+  animation: slideAnimation 1s ease-in-out 1 forwards, slideAnimation 1s 6s ease-in-out 1 reverse forwards;
+
+  .errorHeader {
+    font-size: themeVariables.$fontSizeXL;
+    color: themeVariables.$error;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    transform: translateX(-50%);
+    background-color: themeVariables.$error;
+    width: 60px;
+    height: 5px;
+    border-radius: 50px;
+  }
+
+  &::before {
+    opacity: 0.5;
+  }
+
+  &::after {
+    transform: translateX(-50%) scaleX(1);
+    transform-origin: left top;
+    animation: shrinkAnimation 5s 1s linear 1 forwards;
+  }
+}

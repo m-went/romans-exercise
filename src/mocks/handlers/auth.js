@@ -17,7 +17,7 @@ export const auth = [
         },
       },
     });
-    if (user.password === data.password) {
+    if (user && user.password === data.password) {
       const token = user.login;
       localStorage.setItem('__be_token__', token);
       return res(ctx.status(200), ctx.json({ ...sanitizeUser(user), token }));

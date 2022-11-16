@@ -9,11 +9,14 @@ import useModal from '../../hooks/useModal';
 import useUsers from '../../hooks/useUsers';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { useAuth } from '../../hooks/useAuth';
+import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
+import { useError } from '../../hooks/useError';
 
 function App() {
   const [isOpen, openModal, closeModal] = useModal(false);
   const [chosenUser, setChosenUser] = useState('');
   const { findUser } = useUsers();
+  const errorData = useError();
 
   const auth = useAuth();
 
@@ -35,7 +38,12 @@ function App() {
     );
   };
 
-  return auth.user ? <AuthenticatedApp /> : <LoginForm handleSignIn={auth.signIn} />;
+  return (
+    <>
+      {errorData.error ? <ErrorDisplay /> : null}
+      {auth.user ? <AuthenticatedApp /> : <LoginForm handleSignIn={auth.signIn} />};
+    </>
+  );
 }
 
 export default App;
