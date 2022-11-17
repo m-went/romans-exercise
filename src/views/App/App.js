@@ -1,16 +1,11 @@
-import styles from './App.module.scss';
-import Routes from '../../routes';
-import Navbar from '../../components/Navbar/Navbar';
-import NewsSection from '../NewsSection/NewsSection';
 import { useState } from 'react';
-import Searchbar from '../../components/Searchbar/Searchbar';
-import Modal from '../../components/Modal/Modal';
 import useModal from '../../hooks/useModal';
 import useUsers from '../../hooks/useUsers';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { useAuth } from '../../hooks/useAuth';
 import ErrorDisplay from '../../components/ErrorDisplay/ErrorDisplay';
 import { useError } from '../../hooks/useError';
+import AuthenticatedApp from '../../components/AuthenticatedApp/AuthenticatedApp';
 
 function App() {
   const [isOpen, openModal, closeModal] = useModal(false);
@@ -26,22 +21,20 @@ function App() {
     openModal();
   };
 
-  const AuthenticatedApp = () => {
-    return (
-      <div className={`${styles.app}`}>
-        <Navbar />
-        <Searchbar />
-        <Routes showUserDetails={showUserDetails} />
-        <Modal chosenUser={chosenUser} isOpen={isOpen} closeModal={closeModal} />
-        <NewsSection />
-      </div>
-    );
-  };
-
   return (
     <>
       {errorData.error ? <ErrorDisplay /> : null}
-      {auth.user ? <AuthenticatedApp /> : <LoginForm handleSignIn={auth.signIn} />};
+      {auth.user ? (
+        <AuthenticatedApp
+          chosenUser={chosenUser}
+          isOpen={isOpen}
+          closeModal={closeModal}
+          showUserDetails={showUserDetails}
+        />
+      ) : (
+        <LoginForm handleSignIn={auth.signIn} />
+      )}
+      ;
     </>
   );
 }
