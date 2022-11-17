@@ -3,7 +3,7 @@ import ReactModal from 'react-modal';
 import UserDetails from '../UserDetails/UserDetails';
 
 function Modal({ closeModal, chosenUser, isOpen }) {
-  ReactModal.setAppElement('#root');
+  if (process.env.NODE_ENV !== 'test') ReactModal.setAppElement('#root');
 
   const handleClick = () => {
     closeModal();
