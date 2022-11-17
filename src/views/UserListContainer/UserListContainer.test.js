@@ -1,45 +1,20 @@
-import { screen, render } from '@testing-library/react';
-import UserList from './UserListContainer';
-import App from '../App/App';
+import { screen, render, fireEvent } from '@testing-library/react';
+import UserListContainer from './UserListContainer';
 import { BrowserRouter } from 'react-router-dom';
-import { handlers } from '../../mocks/handlers';
-import { setupServer } from 'msw/node';
 
-const server = setupServer(...handlers);
-
-describe('userList tests', () => {
-  beforeAll(() => server.listen());
-  afterEach(() => server.resetHandlers());
-  afterAll(() => server.close());
-
-  test('render component', () => {
-    render(<UserList />);
-    const headerElement = screen.getByRole('heading', { name: 'Students List' });
-    expect(headerElement).toBeInTheDocument();
-  });
-
-  test('check if users are properly rendered', async () => {
+describe('userListContainer tests', () => {
+  test('render component and its children', async () => {
     render(
       <BrowserRouter>
-        <App>
-          <UserList />
-        </App>
+        <UserListContainer />
       </BrowserRouter>
     );
-    const nameElement = await screen.findByText('Adam Romański');
-    expect(nameElement).toBeInTheDocument();
+    const headerElement = screen.getByRole('heading', { name: 'Students List' });
+    const rockGroup = await screen.findByText('Rock');
+    fireEvent.click(rockGroup);
+    const rockGroupUser = await screen.findByText('Willard Howe');
+    expect(headerElement).toBeInTheDocument();
+    expect(rockGroup).toBeInTheDocument();
+    expect(rockGroupUser).toBeInTheDocument();
   });
 });
-
-/*      test('check if deleteUser button works properly', () => {
-    render(
-      <BrowserRouter>
-        <App>
-          <UserList />
-        </App>
-      </BrowserRouter>
-    );
-    const buttonElement = screen.getByTestId('Adam Romański');
-    fireEvent.click(buttonElement);
-    expect(buttonElement).not.toBeInTheDocument();
-  });  */

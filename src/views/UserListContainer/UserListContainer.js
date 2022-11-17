@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import useUsers from '../../hooks/useUsers';
 import UsersList from '../../components/UsersList/UsersList';
 
-function UserList({ deleteUser, showUserDetails }) {
+function UserListContainer({ deleteUser, showUserDetails }) {
   const { id } = useParams();
   const { getGroups, getUsers } = useUsers();
   const [users, setUsers] = useState([]);
@@ -43,4 +43,4 @@ function UserList({ deleteUser, showUserDetails }) {
   );
 }
 
-export default UserList;
+export default UserListContainer;

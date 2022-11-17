@@ -1,7 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import AddUserForm from './AddUserForm';
-import App from '../App/App';
-import { BrowserRouter } from 'react-router-dom';
 
 describe('add user tests', () => {
   test('checks if all elements render properly', () => {
@@ -30,19 +28,11 @@ describe('add user tests', () => {
   });
 
   test('checks if click on add button clears inputs when consent is true', () => {
-    render(
-      <BrowserRouter>
-        <App>
-          <AddUserForm />
-        </App>
-      </BrowserRouter>
-    );
-    const addUserForm = screen.getByText('Add User');
-    fireEvent.click(addUserForm);
+    render(<AddUserForm />);
     const nameInput = screen.getByTestId('name');
     const attendanceInput = screen.getByTestId('attendance');
     const averageInput = screen.getByTestId('average');
-    const addButton = screen.getByRole('button', { name: 'Add' });
+    const addButton = screen.getByRole('button');
     const consentInput = screen.getByRole('checkbox');
     fireEvent.change(nameInput, { target: { value: 'Michał Went' } });
     fireEvent.change(attendanceInput, { target: { value: '54%' } });
@@ -53,29 +43,6 @@ describe('add user tests', () => {
     expect(attendanceInput.value).toBe('');
     expect(averageInput.value).toBe('');
   });
-  /* 
-  test('checks if click on add button add user when consent is true', () => {
-    render(
-      <UsersProvider>
-        <AddUserForm />
-        <UserList />
-      </UsersProvider>
-    );
-    const nameInput = screen.getByTestId('name');
-    const attendanceInput = screen.getByTestId('attendance');
-    const averageInput = screen.getByTestId('average');
-    const addButton = screen.getByRole('button', { name: 'Add' });
-    const consentInput = screen.getByRole('checkbox');
-    fireEvent.change(nameInput, { target: { value: 'Michał Went' } });
-    fireEvent.change(attendanceInput, { target: { value: '54%' } });
-    fireEvent.change(averageInput, { target: { value: '4.5' } });
-    fireEvent.click(consentInput);
-    fireEvent.click(addButton);
-    expect(nameInput.value).toBe('');
-    expect(attendanceInput.value).toBe('');
-    expect(averageInput.value).toBe('');
-    expect(screen.getByText('Michał Went')).toBeInTheDocument();
-  }); */
 
   test('checks if click on add button doesnt clears inputs and show error message when consent is false', () => {
     render(<AddUserForm />);

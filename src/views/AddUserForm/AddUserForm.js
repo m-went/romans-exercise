@@ -9,13 +9,12 @@ const initialFormState = {
   error: '',
 };
 
-function AddUserForm({ addUser }) {
+function AddUserForm() {
   const { formState, handleClearForm, handleConsentToggle, handleInputChange, throwError } = useForm(initialFormState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formState.consent) {
-      addUser({ name: formState.name, attendance: formState.attendance, average: formState.average });
       handleClearForm();
     } else {
       throwError('You need to give consent');
@@ -29,7 +28,7 @@ function AddUserForm({ addUser }) {
   return (
     <div className={`${styles.wrapper}`}>
       <form onSubmit={handleSubmit} className={`${styles.form}`}>
-        <h1 className={`${styles.title}`}>Add new student</h1>
+        <h1 className={`${styles.title}`}>Add new user</h1>
         <div className={`${styles.inputRow}`}>
           <label htmlFor="name">Name:</label>
           <input
