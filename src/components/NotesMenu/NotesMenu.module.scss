@@ -1,0 +1,84 @@
+@use '../../assets/styles/themeVariables';
+
+.notesMenu {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-gap: 30px;
+  padding: 30px;
+}
+
+.addNoteForm {
+  padding: 40px 20px;
+  background: themeVariables.$white;
+  border-radius: 25px;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.allNotesList {
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+--- .loginForm {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.inputRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: themeVariables.$fontSizeS;
+    color: themeVariables.$darkGrey;
+  }
+
+  input {
+    padding: 5px 8px;
+    border: 1px solid themeVariables.$darkPurple;
+    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
+    border-radius: 25px;
+    &:focus {
+      outline: none;
+      box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
+    }
+  }
+
+  textarea {
+    padding: 5px 8px;
+    border: 1px solid themeVariables.$darkPurple;
+    box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
+    border-radius: 25px;
+    height: 400px;
+    &:focus {
+      outline: none;
+      box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.3);
+    }
+  }
+}
+
+.button {
+  margin: 15px 0;
+  padding: 7px 30px;
+  font-size: themeVariables.$fontSizeS;
+  background-color: themeVariables.$lightPurple;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  color: themeVariables.$darkGrey;
+  cursor: pointer;
+}

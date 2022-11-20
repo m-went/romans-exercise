@@ -1,0 +1,24 @@
+@use '../../assets/styles/themeVariables';
+
+.note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  h3,
+  p {
+    margin: 0;
+    color: themeVariables.$darkGrey;
+  }
+  button {
+    position: absolute;
+    top: 17px;
+    left: -40px;
+  }
+}
+
+.noteTitle {
+  font-size: themeVariables.$fontSizeXL;
+  color: themeVariables.$darkGrey;
+}

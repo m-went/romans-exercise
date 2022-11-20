@@ -13,6 +13,9 @@ function Navbar(props) {
       <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/add-user" end>
         Add User
       </NavLink>
+      <NavLink className={({ isActive }) => (isActive ? `${styles.active}` : '')} to="/notes" end>
+        Notes
+      </NavLink>
       <NavLink onClick={() => auth.signOut()}>Logout</NavLink>
     </nav>
   );

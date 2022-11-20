@@ -3,11 +3,15 @@ import { ReactComponent as Icon } from '../../assets/icons/delete-icon.svg';
 
 function DeleteUserButton(props) {
   const clickHandler = () => {
-    props.deleteUser(props.user);
+    if (props.user) {
+      props.deleteUser(props.user);
+    } else if (props.removeNote) {
+      props.removeNote();
+    }
   };
 
   return (
-    <button className={`${styles.button}`} onClick={clickHandler} data-testid={props.user.name}>
+    <button className={`${styles.button}`} onClick={clickHandler}>
       <Icon />
     </button>
   );
